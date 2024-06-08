@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import copy
 
 DATA = {
     'omlet': {
@@ -28,3 +29,18 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+
+def show_recipe(request, dish):
+    servings = request.GET.get('servings', 1)
+    serv = int(servings)
+    context = {}
+    ingredients = DATA.get(dish)
+    if ingredients:
+        ingredients_deepcopy = copy.deepcopy(ingredients)
+        for ingredient in ingredients_deepcopy:
+            ingredients_deepcopy[ingredient] *= serv
+        context = {
+          'recipe': ingredients_deepcopy
+        }
+    return render(request, 'calculator/index.html', context)
