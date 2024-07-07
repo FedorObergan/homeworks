@@ -7,36 +7,36 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "Помидор",
-  "description": "Лучшие помидоры на рынке"
+  "title": "Баклажаны",
+  "description": "Лучшие баклажаны"
 }
 
 ###
 
 # получение продуктов
-GET {{baseUrl}}/products/
+GET {{baseUrl}}/products/?limit=2&offset=1
 Content-Type: application/json
 
 ###
 
 # обновление продукта
-PATCH {{baseUrl}}/products/1/
+PATCH {{baseUrl}}/products/2/
 Content-Type: application/json
 
 {
-  "description": "Самые сочные и ароматные помидорки"
+  "description": "Самые ароматные помидорки"
 }
 
 ###
 
 # удаление продукта
-DELETE {{baseUrl}}/products/1/
+DELETE {{baseUrl}}/products/3/
 Content-Type: application/json
 
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=помидор
+GET {{baseUrl}}/products/?search=баклажан
 Content-Type: application/json
 
 ###
@@ -46,15 +46,15 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "Климова, 8",
   "positions": [
     {
-      "product": 2,
+      "product": 1,
       "quantity": 250,
       "price": 120.50
     },
     {
-      "product": 3,
+      "product": 4,
       "quantity": 100,
       "price": 180
     }
@@ -64,20 +64,20 @@ Content-Type: application/json
 ###
 
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH {{baseUrl}}/stocks/1/
 Content-Type: application/json
 
 {
   "positions": [
     {
-      "product": 2,
-      "quantity": 100,
-      "price": 130.80
+      "product": 5,
+      "quantity": 120,
+      "price": 130.70
     },
     {
-      "product": 3,
-      "quantity": 243,
-      "price": 145
+      "product": 2,
+      "quantity": 223,
+      "price": 143
     }
   ]
 }
@@ -85,5 +85,17 @@ Content-Type: application/json
 ###
 
 # поиск складов, где есть определенный продукт
-GET {{baseUrl}}/stocks/?products=2
+GET {{baseUrl}}/stocks/?search=бакл
+Content-Type: application/json
+
+###
+
+# удалить информацию о складе
+DELETE {{baseUrl}}/stocks/3/
+Content-Type: application/json
+
+###
+
+# информация о складах
+GET {{baseUrl}}/stocks/?limit=2
 Content-Type: application/json
