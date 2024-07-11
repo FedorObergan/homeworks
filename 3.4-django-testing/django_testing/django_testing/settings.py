@@ -72,6 +72,11 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+}
+
+
 WSGI_APPLICATION = 'django_testing.wsgi.application'
 
 
@@ -83,6 +88,8 @@ DATABASES = {
         'NAME': 'netology_django_testing',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': 'ваш пароль'
     }
 }
 
