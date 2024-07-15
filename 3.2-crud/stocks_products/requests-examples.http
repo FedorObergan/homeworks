@@ -14,7 +14,7 @@ Content-Type: application/json
 ###
 
 # получение продуктов
-GET {{baseUrl}}/products/?limit=2&offset=1
+GET {{baseUrl}}/products/
 Content-Type: application/json
 
 ###
@@ -36,7 +36,7 @@ Content-Type: application/json
 ###
 
 # поиск продуктов по названию и описанию
-GET {{baseUrl}}/products/?search=баклажан
+GET {{baseUrl}}/products/?search=баклаж
 Content-Type: application/json
 
 ###
@@ -84,8 +84,17 @@ Content-Type: application/json
 
 ###
 
-# поиск складов, где есть определенный продукт
-GET {{baseUrl}}/stocks/?search=бакл
+# поиск складов, где есть определенный продукт,
+# по идентификатору продукта
+GET {{baseUrl}}/stocks/?products__id=5
+Content-Type: application/json
+
+
+###
+
+# поиск складов, где есть определенный продукт,
+# по названию продукта, его части или части описания
+GET {{baseUrl}}/stocks/?search=помид
 Content-Type: application/json
 
 ###
@@ -97,5 +106,5 @@ Content-Type: application/json
 ###
 
 # информация о складах
-GET {{baseUrl}}/stocks/?limit=2
+GET {{baseUrl}}/stocks/
 Content-Type: application/json
